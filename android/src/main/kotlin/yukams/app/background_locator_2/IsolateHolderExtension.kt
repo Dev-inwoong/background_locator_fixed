@@ -24,7 +24,6 @@ internal fun IsolateHolderService.startLocatorService(context: Context) {
     synchronized(serviceStarted) {
         this.context = context
         // resetting the background engine to avoid being stuck after an app crash
-        IsolateHolderService.backgroundEngine?.destroy();
         IsolateHolderService.backgroundEngine = null
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
@@ -43,11 +42,6 @@ internal fun IsolateHolderService.startLocatorService(context: Context) {
                     .getLong(Keys.CALLBACK_DISPATCHER_HANDLE_KEY, 0)
                 val callbackInfo =
                     FlutterCallbackInformation.lookupCallbackInformation(callbackHandle)
-
-                if(callbackInfo == null) {
-                    Log.e("IsolateHolderExtension", "Fatal: failed to find callback");
-                    return;
-                }
 
                 val args = DartExecutor.DartCallback(
                     context.assets,

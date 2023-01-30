@@ -9,7 +9,7 @@ import 'location_dto.dart';
 @pragma('vm:entry-point')
 void callbackDispatcher() {
   const MethodChannel _backgroundChannel =
-      MethodChannel(Keys.BACKGROUND_CHANNEL_ID);
+  MethodChannel(Keys.BACKGROUND_CHANNEL_ID);
   WidgetsFlutterBinding.ensureInitialized();
 
   _backgroundChannel.setMethodCallHandler((MethodCall call) async {
@@ -18,13 +18,13 @@ void callbackDispatcher() {
       final Function callback = PluginUtilities.getCallbackFromHandle(
           CallbackHandle.fromRawHandle(args[Keys.ARG_CALLBACK]))!;
       final LocationDto location =
-          LocationDto.fromJson(args[Keys.ARG_LOCATION]);
+      LocationDto.fromJson(args[Keys.ARG_LOCATION]);
       callback(location);
     } else if (Keys.BCM_NOTIFICATION_CLICK == call.method) {
       final Map<dynamic, dynamic> args = call.arguments;
       final Function? notificationCallback =
-          PluginUtilities.getCallbackFromHandle(CallbackHandle.fromRawHandle(
-              args[Keys.ARG_NOTIFICATION_CALLBACK]));
+      PluginUtilities.getCallbackFromHandle(CallbackHandle.fromRawHandle(
+          args[Keys.ARG_NOTIFICATION_CALLBACK]));
       if (notificationCallback != null) {
         notificationCallback();
       }

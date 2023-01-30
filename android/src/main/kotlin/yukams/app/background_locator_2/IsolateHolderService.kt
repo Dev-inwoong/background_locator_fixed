@@ -230,26 +230,28 @@ class IsolateHolderService : MethodChannel.MethodCallHandler, LocationUpdateList
     }
 
     private fun updateNotification(intent: Intent) {
-        Log.e("IsolateHolderService", "updateNotification")
         if (intent.hasExtra(Keys.SETTINGS_ANDROID_NOTIFICATION_TITLE)) {
             notificationTitle =
-                intent.getStringExtra(Keys.SETTINGS_ANDROID_NOTIFICATION_TITLE).toString()
+                intent.getStringExtra(Keys.SETTINGS_ANDROID_NOTIFICATION_TITLE).toString() // "new location received"
         }
 
         if (intent.hasExtra(Keys.SETTINGS_ANDROID_NOTIFICATION_MSG)) {
             notificationMsg =
-                intent.getStringExtra(Keys.SETTINGS_ANDROID_NOTIFICATION_MSG).toString()
+                intent.getStringExtra(Keys.SETTINGS_ANDROID_NOTIFICATION_MSG).toString() // Time info, ex) 2023-01-09 06:19:20.369547
         }
 
         if (intent.hasExtra(Keys.SETTINGS_ANDROID_NOTIFICATION_BIG_MSG)) {
             notificationBigMsg =
-                intent.getStringExtra(Keys.SETTINGS_ANDROID_NOTIFICATION_BIG_MSG).toString()
+                intent.getStringExtra(Keys.SETTINGS_ANDROID_NOTIFICATION_BIG_MSG).toString() // Location info, ex) 37.339455, 126.8634217
         }
+        Log.e("IsolateHolderService", "updatenotification : $notificationTitle, $notificationMsg, $notificationBigMsg")
 
         val notification = getNotification()
         val notificationManager =
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.notify(notificationId, notification)
+
+
     }
 
     private fun getMainActivityClass(context: Context): Class<*>? {
@@ -348,4 +350,5 @@ class IsolateHolderService : MethodChannel.MethodCallHandler, LocationUpdateList
             }
         }
     }
+
 }
