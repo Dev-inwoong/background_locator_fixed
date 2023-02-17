@@ -260,7 +260,7 @@ class BackgroundLocatorPlugin
 
                 result.success(true)
             }
-            "wakeupScreen" -> { //í™”ë©´ ê°•ì œ ê¹¨ìš°ê¸°
+            "wakeupScreen" -> { //È­¸é °­Á¦ ±ú¿ì±â
                 val powerManager = context!!.getSystemService("power") as PowerManager
 
                 val wakeLock = powerManager.newWakeLock(
@@ -273,7 +273,7 @@ class BackgroundLocatorPlugin
 
 
             }
-            "launchApp" ->{ // ì•± ê°•ì œ ì‹¤í–‰
+            "launchApp" ->{ // ¾Û °­Á¦ ½ÇÇà
                 val intent = context!!.packageManager.getLaunchIntentForPackage("com.example.bbibik")
                 if(intent != null){
                     context!!.startActivity(intent)

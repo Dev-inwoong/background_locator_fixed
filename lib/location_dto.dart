@@ -15,21 +15,21 @@ class LocationDto {
   final String provider;
 
   LocationDto._(
-      this.latitude,
-      this.longitude,
-      this.accuracy,
-      this.altitude,
-      this.speed,
-      this.speedAccuracy,
-      this.heading,
-      this.time,
-      this.isMocked,
-      this.provider,
-      );
+    this.latitude,
+    this.longitude,
+    this.accuracy,
+    this.altitude,
+    this.speed,
+    this.speedAccuracy,
+    this.heading,
+    this.time,
+    this.isMocked,
+    this.provider,
+  );
 
   factory LocationDto.fromJson(Map<dynamic, dynamic> json) {
     bool isLocationMocked =
-    Platform.isAndroid ? json[Keys.ARG_IS_MOCKED] : false;
+        Platform.isAndroid ? json[Keys.ARG_IS_MOCKED] : false;
     return LocationDto._(
       json[Keys.ARG_LATITUDE],
       json[Keys.ARG_LONGITUDE],

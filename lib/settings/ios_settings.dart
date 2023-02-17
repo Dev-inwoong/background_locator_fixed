@@ -13,7 +13,7 @@ class IOSSettings extends LocatorSettings {
 
   final bool showsBackgroundLocationIndicator;
   final bool stopWithTerminate;
-
+  
   const IOSSettings({
     LocationAccuracy accuracy = LocationAccuracy.NAVIGATION,
     double distanceFilter = 0,
@@ -26,7 +26,7 @@ class IOSSettings extends LocatorSettings {
       Keys.SETTINGS_ACCURACY: accuracy.value,
       Keys.SETTINGS_DISTANCE_FILTER: distanceFilter,
       Keys.SETTINGS_IOS_SHOWS_BACKGROUND_LOCATION_INDICATOR:
-      showsBackgroundLocationIndicator,
+          showsBackgroundLocationIndicator,
       Keys.SETTINGS_IOS_STOP_WITH_TERMINATE: stopWithTerminate,
     };
   }

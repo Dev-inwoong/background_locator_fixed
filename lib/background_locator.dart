@@ -17,7 +17,7 @@ class BackgroundLocator {
 
   static Future<void> initialize() async {
     final CallbackHandle callback =
-    PluginUtilities.getCallbackHandle(callbackDispatcher)!;
+        PluginUtilities.getCallbackHandle(callbackDispatcher)!;
     await _channel.invokeMethod(Keys.METHOD_PLUGIN_INITIALIZE_SERVICE,
         {Keys.ARG_CALLBACK_DISPATCHER: callback.toRawHandle()});
   }
@@ -27,11 +27,11 @@ class BackgroundLocator {
   static Future<void> registerLocationUpdate(
       void Function(LocationDto) callback,
       {void Function(Map<String, dynamic>)? initCallback,
-        Map<String, dynamic> initDataCallback = const {},
-        void Function()? disposeCallback,
-        bool autoStop = false,
-        AndroidSettings androidSettings = const AndroidSettings(),
-        IOSSettings iosSettings = const IOSSettings()}) async {
+      Map<String, dynamic> initDataCallback = const {},
+      void Function()? disposeCallback,
+      bool autoStop = false,
+      AndroidSettings androidSettings = const AndroidSettings(),
+      IOSSettings iosSettings = const IOSSettings()}) async {
     if (autoStop) {
       _widgetsBinding!.addObserver(AutoStopHandler());
     }
@@ -80,11 +80,11 @@ class BackgroundLocator {
 
     await _channel.invokeMethod(Keys.METHOD_PLUGIN_UPDATE_NOTIFICATION, arg);
   }
-
   static Future<void> wakeupScreen() async{
     await _channel.invokeMethod("wakeupScreen");
   }
   static Future<void> launchApp() async{
     await _channel.invokeMethod("launchApp");
   }
+
 }

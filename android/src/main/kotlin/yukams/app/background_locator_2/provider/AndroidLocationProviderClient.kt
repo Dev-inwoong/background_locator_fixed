@@ -10,7 +10,7 @@ import android.os.Bundle
 
 class AndroidLocationProviderClient(context: Context, override var listener: LocationUpdateListener?) : BLLocationProvider, LocationListener {
     private val client: LocationManager? =
-        ContextCompat.getSystemService(context, LocationManager::class.java)
+            ContextCompat.getSystemService(context, LocationManager::class.java)
 
     private var overrideLocation: Boolean = false
     private var timeOfLastLocation: Long = 0L
@@ -28,15 +28,15 @@ class AndroidLocationProviderClient(context: Context, override var listener: Loc
         timeBetweenLocation = request.interval
         if (client?.isProviderEnabled(LocationManager.GPS_PROVIDER) == true) {
             client.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                request.interval,
-                request.distanceFilter,
-                this)
+                    request.interval,
+                    request.distanceFilter,
+                    this)
         }
         if (client?.isProviderEnabled(LocationManager.NETWORK_PROVIDER) == true) {
             client.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,
-                request.interval,
-                request.distanceFilter,
-                this)
+                    request.interval,
+                    request.distanceFilter,
+                    this)
         }
         gpsLocation = client?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
         networkLocation = client?.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
@@ -61,9 +61,9 @@ class AndroidLocationProviderClient(context: Context, override var listener: Loc
         // only minimal locations
         if (location.hasAccuracy()) {
             if (!location.accuracy.isNaN() &&
-                location.accuracy != 0.0f &&
-                !location.accuracy.isFinite() &&
-                !location.accuracy.isInfinite()) {
+                    location.accuracy != 0.0f &&
+                    !location.accuracy.isFinite() &&
+                    !location.accuracy.isInfinite()) {
                 overrideLocation = true
             }
         }
