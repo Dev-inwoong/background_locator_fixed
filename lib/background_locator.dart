@@ -86,5 +86,4 @@ class BackgroundLocator {
   static Future<void> launchApp() async{
     await _channel.invokeMethod("launchApp");
   }
-
 }
