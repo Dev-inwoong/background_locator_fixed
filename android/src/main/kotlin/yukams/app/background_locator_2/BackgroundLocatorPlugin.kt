@@ -260,7 +260,7 @@ class BackgroundLocatorPlugin
 
                 result.success(true)
             }
-            "wakeupScreen" -> { //화면 강제 깨우기
+            "wakeupScreen" -> {
                 val powerManager = context!!.getSystemService("power") as PowerManager
 
                 val wakeLock = powerManager.newWakeLock(
@@ -273,7 +273,7 @@ class BackgroundLocatorPlugin
 
 
             }
-            "launchApp" ->{ // 앱 강제 실행
+            "launchApp" ->{
                 val intent = context!!.packageManager.getLaunchIntentForPackage("com.example.bbibik")
                 if(intent != null){
                     context!!.startActivity(intent)
